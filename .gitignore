@@ -1,0 +1,5 @@
+build/
+.guemu/
+*.exe
+*.o
+*.obj
