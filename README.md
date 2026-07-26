@@ -48,4 +48,4 @@ This is an initial prototype, not a production emulator. It does not bundle Andr
 
 ## Windows builds
 
-This project includes a GitHub Actions workflow that builds the x64 target on `windows-latest`, runs the tests, and uploads `guemu.exe` as the `guemu-win64` artifact. This is the recommended path when you do not have a local Linux environment.
+This project includes a GitHub Actions workflow that sets up an MSVC x64 environment on `windows-latest`, configures with Ninja, runs the tests, and uploads `guemu.exe` as the `guemu-win64` artifact. This is the recommended path when you do not have a local Linux environment.
