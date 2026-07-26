@@ -3,28 +3,6 @@
 This repository contains a C++17 prototype for a MuMuPlayer-inspired Android emulator launcher. It does not copy MuMuPlayer code or assets. The prototype focuses on the host-side architecture needed to manage ROM packages, create isolated emulator instances, prepare root/writable-system settings, describe input mapping, accept virtual gyroscope state, and generate a QEMU-based launch plan.
 
 
-## 简体中文说明
-
-Gu Android Emulator Prototype 是一个使用 C++17 编写的安卓模拟器主控启动器原型，目标是提供类似商业安卓模拟器的基础管理能力，但不复制任何第三方模拟器代码或资源。当前版本重点实现 ROM 包管理、多实例配置、root/可写 system 设置、按键映射、虚拟陀螺仪状态以及 QEMU 启动计划生成。
-
-注意：仓库不会内置 Android 系统镜像、Google 服务组件、专有 ARM 转译库或商业驱动。请自行导入合法获取的 GSI + GMS 镜像。
-
-### 中文界面
-
-程序支持简体中文输出。可以通过命令行参数或环境变量启用：
-
-```bash
-./build/guemu --lang zh-CN
-GUEMU_LANG=zh-CN ./build/guemu
-```
-
-Windows PowerShell 示例：
-
-```powershell
-$env:GUEMU_LANG = "zh-CN"
-.\guemu.exe
-```
-
 ## Planned capabilities
 
 - Multi-ROM management with importable ROM packages.
@@ -72,3 +50,25 @@ This is an initial prototype, not a production emulator. It does not bundle Andr
 ## Windows builds
 
 This project includes a GitHub Actions workflow that sets up an MSVC x64 environment on `windows-latest`, configures with Ninja, runs the tests, and uploads `guemu.exe` as the `guemu-win64` artifact. This is the recommended path when you do not have a local Linux environment.
+
+## 简体中文说明
+
+Gu Android Emulator Prototype 是一个使用 C++17 编写的安卓模拟器主控启动器原型，目标是提供类似商业安卓模拟器的基础管理能力，但不复制任何第三方模拟器代码或资源。当前版本重点实现 ROM 包管理、多实例配置、root/可写 system 设置、按键映射、虚拟陀螺仪状态以及 QEMU 启动计划生成。
+
+注意：仓库不会内置 Android 系统镜像、Google 服务组件、专有 ARM 转译库或商业驱动。请自行导入合法获取的 GSI + GMS 镜像。
+
+### 中文界面
+
+程序支持简体中文输出。可以通过命令行参数或环境变量启用：
+
+```bash
+./build/guemu --lang zh-CN
+GUEMU_LANG=zh-CN ./build/guemu
+```
+
+Windows PowerShell 示例：
+
+```powershell
+$env:GUEMU_LANG = "zh-CN"
+.\guemu.exe
+```
