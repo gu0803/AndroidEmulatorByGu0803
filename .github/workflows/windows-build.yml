@@ -1,0 +1,23 @@
+name: Windows build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  win64:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lukka/get-cmake@latest
+      - name: Configure x64
+        run: cmake -S . -B build-win64 -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release
+      - name: Build x64 executable
+        run: cmake --build build-win64 --config Release
+      - name: Run tests
+        run: ctest --test-dir build-win64 -C Release --output-on-failure
+      - name: Upload guemu.exe
+        uses: actions/upload-artifact@v4
+        with:
+          name: guemu-win64
+          path: build-win64/Release/guemu.exe
