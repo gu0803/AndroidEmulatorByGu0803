@@ -8,4 +8,4 @@ fi
 
 cmake -S . -B build-win64 -DCMAKE_TOOLCHAIN_FILE=cmake/mingw-w64-toolchain.cmake -DCMAKE_BUILD_TYPE=Release
 cmake --build build-win64 --config Release
-file build-win64/guemu.exe build-win64/guemu_zh.exe || true
+file build-win64/guemu.exe || true
