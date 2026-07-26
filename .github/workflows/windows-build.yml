@@ -1,0 +1,26 @@
+name: Windows build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  win64:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up MSVC x64 environment
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+      - name: Configure x64
+        run: cmake -S . -B build-win64 -G Ninja -DCMAKE_BUILD_TYPE=Release
+      - name: Build x64 executable
+        run: cmake --build build-win64 --config Release
+      - name: Run tests
+        run: ctest --test-dir build-win64 --output-on-failure
+      - name: Upload guemu.exe
+        uses: actions/upload-artifact@v4
+        with:
+          name: guemu-win64
+          path: build-win64/guemu.exe
