@@ -15,10 +15,22 @@ add_executable(guemu
 
 target_include_directories(guemu PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
+add_executable(guemu_zh
+    src/main_zh.cpp
+    src/config.cpp
+    src/rom_manager.cpp
+    src/input_mapper.cpp
+    src/virtual_device.cpp
+)
+
+target_include_directories(guemu_zh PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 if (MSVC)
     target_compile_options(guemu PRIVATE /W4 /permissive-)
+    target_compile_options(guemu_zh PRIVATE /W4 /permissive-)
 else()
     target_compile_options(guemu PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(guemu_zh PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
 include(CTest)

@@ -19,8 +19,10 @@ if errorlevel 1 exit /b %errorlevel%
 
 if exist build-win64\Release\guemu.exe (
     echo Built build-win64\Release\guemu.exe
+    if exist build-win64\Release\guemu_zh.exe echo Built build-win64\Release\guemu_zh.exe
 ) else if exist build-win64\guemu.exe (
     echo Built build-win64\guemu.exe
+    if exist build-win64\guemu_zh.exe echo Built build-win64\guemu_zh.exe
 ) else (
     echo Build completed, but guemu.exe was not found in the expected location.
     exit /b 1

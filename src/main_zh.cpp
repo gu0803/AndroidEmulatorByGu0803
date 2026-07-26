@@ -15,12 +15,12 @@ int main(int argc, char** argv) {
 
         if (argc >= 2 && std::string(argv[1]) == "import-rom" && argc == 5) {
             auto rom = roms.importRom(argv[2], argv[3], argv[4]);
-            std::cout << "Imported ROM: " << rom.name << " as " << rom.id << '\n';
+            std::cout << "已导入 ROM：" << rom.name << "，ID：" << rom.id << '\n';
             return 0;
         }
         if (argc >= 2 && std::string(argv[1]) == "create-template-rom") {
             auto rom = roms.createStableGsiGmsTemplate("stable-gsi-gms", "Android 15 stable");
-            std::cout << "Created importable ROM template: " << rom.imagePath << '\n';
+            std::cout << "已创建可导入的 ROM 模板：" << rom.imagePath << '\n';
             return 0;
         }
 
@@ -36,10 +36,10 @@ int main(int argc, char** argv) {
         VirtualDevice device(settings, rom);
         device.setGyroscope({0.0, 0.0, 9.8});
 
-        std::cout << "Gu Android Emulator prototype\n";
+        std::cout << "Gu 安卓模拟器原型\n";
         std::cout << device.status() << "\n";
-        std::cout << "Mappings:\n" << mapper.serialize();
-        std::cout << "Note: this prototype prepares ROM/instance metadata and a QEMU launch plan; bundle a licensed GSI+GMS image before booting.\n";
+        std::cout << "按键映射：\n" << mapper.serialize();
+        std::cout << "提示：此原型会准备 ROM/实例元数据和 QEMU 启动计划；启动前请导入已获得授权的 GSI+GMS 镜像。\n";
         return 0;
     } catch (const std::exception& ex) {
         std::cerr << "guemu: " << ex.what() << '\n';
